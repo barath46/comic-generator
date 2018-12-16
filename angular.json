@@ -118,5 +118,10 @@
       }
     }
   },
-  "defaultProject": "comic-generator"
+  "defaultProject": "comic-generator",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
