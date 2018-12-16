@@ -1,0 +1,21 @@
+<div class="comic-generator-index container">
+
+  <div class="text-center">
+    <button class="btn btn-lg btn-primary" (click)='generateComic()'>Click To Generate</button>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="alert alert-info text-center" *ngIf='alert' role="alert">Nothing to show. Please click the above button to generate Comic</div>
+
+      <div class="loader" *ngIf='loader'></div>
+     
+      <div *ngIf='comicData' class="comic-data-list">
+          <h1><span>{{ comicData.num }}.</span>{{ comicData.title}}</h1>
+          <img src='{{ comicData.img }}'>
+          <p>About: {{comicData.transcript}}</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
