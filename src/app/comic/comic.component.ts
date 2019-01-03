@@ -12,16 +12,17 @@ export class ComicComponent implements OnInit {
   alert: boolean = true;
   loader: boolean = false;
   randomNumArr = [];
-  maximumComicLimit = 3;
+  maximumComicLimit = 1000;
+  
   constructor(private http: HttpClient) { }
 
   ngOnInit() { }
 
   generateComic() {
     this.loader = true;
-    this.randomNumber = Math.floor(Math.random() * this.maximumComicLimit) + 1;
+    this.randomNumber = Math.floor(Math.random() * this.maximumComicLimit);
     if (this.randomNumArr.length >= this.maximumComicLimit) {
-      alert('fuck off');
+      alert('You have studied all comics');
       return;
     }
     if(this.randomNumArr.length && this.doesNumberAlreadyExist(this.randomNumber)) {
@@ -30,7 +31,6 @@ export class ComicComponent implements OnInit {
     }
     this.randomNumArr.push(this.randomNumber);
     this.apiFetch();
-    console.log("comes here else", this.randomNumArr);
   }
 
   apiFetch() {
@@ -46,8 +46,6 @@ export class ComicComponent implements OnInit {
   }
 
   doesNumberAlreadyExist(num) {
-    console.log('coming number', num);
-
     if(this.randomNumArr.includes(num)) {
         return true;
     }
